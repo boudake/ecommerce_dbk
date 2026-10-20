@@ -5,6 +5,7 @@ orders_silver = "dev.ecommerce.orders_silver"
 sales_gold = "dev.ecommerce.sales_gold"
 catalog = "dev"
 bronze_schema = "bronze"
+silver_schema = "silver"
 
 [prod]
 orders_source = "prod.raw.orders"
