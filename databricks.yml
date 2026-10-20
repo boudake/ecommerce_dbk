@@ -1,0 +1,55 @@
+bundle:
+  name: ecommerce_pipeline
+
+variables:
+  catalog:
+    default: dev
+  schema:
+    default: dev
+  environment:
+    default: dev
+
+
+resources:
+  pipelines:
+    ecommerce_pipeline:
+      name: ecommerce-pipeline-${bundle.target}
+
+      root_path: ./src
+
+      catalog: ${var.catalog}
+      schema: ${var.schema}
+      serverless: true
+
+      configuration:
+        app.environment: ${var.environment}
+        ecommerce.catalog: ${var.catalog}
+        #ecommerce.config_path: /Workspace/Users/yacinediale86@hotmail.fr/.../config.toml
+        ecommerce.config_path: /Workspace/Users/yacinediale86@hotmail.fr/.bundle/ecommerce_pipeline/dev/files/config.toml
+        ecommerce.bronze.schema: bronze
+        ecommerce.silver.schema: silver
+        ecommerce.gold.schema: gold
+
+      libraries:
+        - glob:
+            include: ./src/**
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-a1905a57-e3c6.cloud.databricks.com/
+    variables:
+      catalog: dev
+      schema: bronze
+      environment: dev
+
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-a1905a57-e3c6.cloud.databricks.com/
+    variables:
+      catalog: prod
+      schema: bronze
+      environment: prod
