@@ -13,9 +13,6 @@ catalog = config["catalog"]
 schema = config["silver_schema"]
 bronze_schema = config["bronze_schema"]
 
-orders_path = config["orders_source"]
-
-
 @dp.table(name=f"{catalog}.{schema}.orders")
 def orders_bronze():
   return (

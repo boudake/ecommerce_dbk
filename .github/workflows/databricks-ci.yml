@@ -57,3 +57,5 @@ jobs:
 
       - name: Deploy bundle
         run: databricks bundle deploy -t dev
+      - name: Run pipeline
+        run: databricks bundle run ecommerce_pipeline -t dev
