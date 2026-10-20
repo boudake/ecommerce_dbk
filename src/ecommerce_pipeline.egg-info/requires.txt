@@ -1,0 +1,5 @@
+
+[dev]
+pytest>=8.0
+ruff>=0.9
+pyspark>=3.5.0

@@ -1,20 +1,19 @@
 from pyspark import pipelines as dp
 from pyspark.sql import SparkSession
 
-from config_loader import load_config
-
+from pipeline_config import get_pipeline_config
 
 spark = SparkSession.getActiveSession()
 if spark is None:
     raise RuntimeError("No active Spark session available")
 
-config = load_config(spark)
+config = get_pipeline_config()
+
+
 orders_path = config["orders_source"]
 
 
-catalog = spark.conf.get("ecommerce.catalog")
-schema = spark.conf.get("ecommerce.bronze.schema")
-@dp.table(name=f"{catalog}.{schema}.orders_stream")
+@dp.table(name=f"{config['catalog']}.{config['bronze_schema']}.orders_stream")
 def orders_bronze():
     return (
         spark.readStream
