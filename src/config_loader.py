@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 def load_config(config_path: Path, environment: str) -> dict:
-    #
+    
     with config_path.open("rb") as file:
         all_config = tomllib.load(file)
 
