@@ -6,6 +6,7 @@ sales_gold = "dev.ecommerce.sales_gold"
 catalog = "dev"
 bronze_schema = "bronze"
 silver_schema = "silver"
+config_path = "dev/ecommerce/config"
 
 [prod]
 orders_source = "prod.raw.orders"

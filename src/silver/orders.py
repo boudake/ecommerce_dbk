@@ -1,5 +1,4 @@
 from pyspark import pipelines as dp
-from pyspark.sql.functions import col, to_date
 from pyspark.sql import SparkSession
 from silver.clean_order import clean_orders
 
