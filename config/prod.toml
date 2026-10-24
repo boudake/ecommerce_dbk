@@ -1,0 +1,8 @@
+[prod]
+orders_source = "prod.raw.orders"
+orders_bronze = "prod.ecommerce.orders_bronze"
+orders_silver = "prod.ecommerce.orders_silver"
+sales_gold = "prod.ecommerce.sales_gold"
+catalog = "prod"
+bronze_schema = "bronze"
+silver_schema = "silver"

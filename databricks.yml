@@ -9,6 +9,10 @@ variables:
   environment:
     default: dev
 
+sync:
+  include:
+    - src/**
+    - config/**
 
 resources:
   pipelines:
@@ -24,8 +28,7 @@ resources:
       configuration:
         app.environment: ${var.environment}
         ecommerce.catalog: ${var.catalog}
-        #ecommerce.config_path: /Workspace/Users/yacinediale86@hotmail.fr/.../config.toml
-        ecommerce.config_path: /Workspace/Users/yacinediale86@hotmail.fr/.bundle/ecommerce_pipeline/dev/files/config.toml
+        ecommerce.config_path: ${workspace.file_path}/config/${bundle.target}.toml
         ecommerce.bronze.schema: bronze
         ecommerce.silver.schema: silver
         ecommerce.gold.schema: gold
